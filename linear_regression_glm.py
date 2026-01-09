@@ -1,15 +1,12 @@
 """
-Title: Model Fitting with Linear Regression and Poisson GLM
+Model Fitting with Linear Regression and Poisson GLM
 
-Goal:
-    1) Fit a linear regression model to predict a continuous target.
-    2) Fit a Poisson GLM to predict spike counts from a stimulus feature.
+aim: 1) Fit a linear regression model to predict a continuous target.
+     2) Fit a Poisson GLM to predict spike counts from a stimulus feature.
 
-Why this matters:
-    These are core tools for building and interpreting simple encoding models in neuroscience.
+Why this matters: These are core tools for building and interpreting simple encoding models in neuroscience.
 
-Source:
-    Neuromatch Academy – Machine Learning / Model Fitting
+Source: Neuromatch Academy – Machine Learning / Model Fitting
 """
 
 import numpy as np
@@ -25,15 +22,15 @@ def run():
     rng = np.random.default_rng(0)
 
     
-    # Part 1: Linear Regression
+    #Part 1: Linear Regression
     
     n_samples = 800
     n_features = 6
 
-    # Create synthetic features
+    #Create synthetic features
     X = rng.normal(0, 1, size=(n_samples, n_features))
 
-    # True weights (ground truth)
+    #True weights (ground truth)
     w_true = rng.normal(0, 1, size=n_features)
 
     # Continuous target with noise
@@ -69,7 +66,7 @@ def run():
     
     # Part 2: Poisson GLM (spike counts)
 
-    # We'll simulate a single stimulus feature (e.g., contrast or orientation projection)
+    #We'll simulate a single stimulus feature 
     n_trials = 1200
     stimulus = rng.normal(0, 1, size=n_trials)
 
@@ -86,12 +83,12 @@ def run():
         X_glm, spikes, test_size=0.25, random_state=0
     )
 
-    # PoissonRegressor is a GLM with log link (standard for spike counts)
+    #PoissonRegressor is a GLM with log link (standard for spike counts)
     glm = PoissonRegressor(alpha=0.0, max_iter=1000)
     glm.fit(X_train, y_train)
     y_pred_counts = glm.predict(X_test)
 
-    # A simple, readable metric here: correlation between true and predicted spike counts
+    #A simple, readable metric here: correlation between true and predicted spike counts
     corr = np.corrcoef(y_test, y_pred_counts)[0, 1]
     print(f"[Poisson GLM] Corr(true, predicted): {corr:.3f}")
 
@@ -111,4 +108,5 @@ def run():
 
 
 if __name__ == "__main__":
+
     run()
