@@ -3,8 +3,7 @@ PCA of Neural Population Activity
 
 To apply Principal Component Analysis (PCA) to high-dimensional neural population responses and visualise dominant patterns of variance.
 
-Source:
-    Neuromatch Academy - Dimensionality Reduction
+Source: Neuromatch Academy - Dimensionality Reduction
 """
 
 import numpy as np
@@ -21,20 +20,20 @@ def run():
     rng = np.random.default_rng(0)
 
     
-    # 1 Population parameters
+    #Population parameters
     
     n_neurons = 40
     prefs = np.linspace(-90, 90, n_neurons)
     sigma = 35.0
 
     
-    # 2 Generate stimuli
+    #Generate stimuli
     
     n_trials = 800
     stimuli = rng.uniform(-60, 60, size=n_trials)
 
     
-    # 3 Simulate population activity
+    #Simulate population activity
     
     X = []
     for stim in stimuli:
@@ -55,7 +54,7 @@ def run():
     print("Explained variance ratio:", pca.explained_variance_ratio_)
 
     
-    # 5 Visualisation
+    #Visualisation
     
     plt.figure()
     sc = plt.scatter(
@@ -74,7 +73,7 @@ def run():
     plt.show()
 
     
-    # 6 Variance explained plot
+    #Variance explained plot
     
     pca_full = PCA()
     pca_full.fit(X_z)
@@ -91,4 +90,5 @@ def run():
 
 if __name__ == "__main__":
     run()
+
 
