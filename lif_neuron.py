@@ -4,8 +4,7 @@ Leaky Integrate-and-Fire (LIF) Neuron Model
 To simulate a single leaky integrate-and-fire neuron and
     examine how its firing rate depends on input current.
 
-Source:
-    Neuromatch Academy Intro to Modelling
+Source: Neuromatch Academy Intro to Modelling
 """
 
 import numpy as np
